@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ladies & Tramps Grooming | Plymouth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Quicksand', sans-serif; background: #fef6f6; color: #4a334a;
+            overflow-x: hidden;
+        }
+
+        /* Hero: soft pink curved */
+        .hero {
+            background: linear-gradient(135deg, #ffdbdb 0%, #ffe4e1 50%, #fff0f0 100%);
+            padding: 3rem 4rem 0; position: relative; overflow: hidden;
+            min-height: 90vh; display: flex; flex-direction: column;
+        }
+        .hero-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 0 2rem; position: relative; z-index: 2;
+        }
+        .hero-nav .logo {
+            font-family: 'Nunito', sans-serif; font-size: 1.6rem; color: #d4748a; font-weight: 800;
+        }
+        .hero-nav .logo span { color: #a3a380; }
+        .hero-nav nav a {
+            margin-left: 2rem; text-decoration: none; color: #4a334a; font-weight: 600;
+            font-size: 0.95rem; transition: color .3s;
+        }
+        .hero-nav nav a:hover { color: #d4748a; }
+        .hero-content {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: center; flex: 1; position: relative; z-index: 2;
+        }
+        .hero-text { padding: 2rem 0; }
+        .hero-text .tag { display: inline-block; background: #fff; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: #d4748a; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(212,116,138,.15); }
+        .hero-text h1 { font-family: 'Nunito', sans-serif; font-size: 3.8rem; line-height: 1.2; color: #4a334a; }
+        .hero-text h1 span { color: #d4748a; }
+        .hero-text p { font-size: 1.1rem; color: #7a5a7a; line-height: 1.7; margin: 1.5rem 0; max-width: 450px; }
+        .hero-img {
+            position: relative; display: flex; justify-content: center; align-items: flex-end;
+        }
+        .hero-img img {
+            width: 100%; max-width: 450px; border-radius: 60px 60px 0 0;
+            box-shadow: 0 20px 60px rgba(212,116,138,.25);
+            object-fit: cover;
+        }
+        .hero-shape {
+            position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+            background: #fff; border-radius: 50% 50% 0 0; z-index: 1;
+        }
+
+        /* Floating paw prints in bg */
+        .paw { position: absolute; opacity: 0.04; font-size: 4rem; user-select: none; pointer-events: none; }
+        .p1 { top: 10%; left: 5%; transform: rotate(-20deg); }
+        .p2 { bottom: 20%; right: 8%; transform: rotate(40deg); }
+        .p3 { top: 40%; right: 45%; transform: rotate(10deg); }
+
+        .btn-soft {
+            display: inline-block; padding: 1rem 2.5rem; background: #d4748a; color: #fff;
+            text-decoration: none; font-weight: 700; border-radius: 50px;
+            transition: all .3s; border: none; cursor: pointer; font-family: 'Quicksand', sans-serif;
+            font-size: 1rem; box-shadow: 0 4px 15px rgba(212,116,138,.3);
+        }
+        .btn-soft:hover { background: #c45a72; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212,116,138,.4); }
+        .btn-outline-soft {
+            display: inline-block; padding: 1rem 2.5rem; background: transparent; color: #d4748a;
+            text-decoration: none; font-weight: 700; border-radius: 50px; border: 2px solid #d4748a;
+            margin-left: 1rem; transition: all .3s; font-size: 1rem;
+        }
+        .btn-outline-soft:hover { background: #d4748a; color: #fff; }
+
+        /* Services: rounded cards */
+        .services { padding: 5rem 4rem; background: #fff; }
+        .services h2 { font-family: 'Nunito', sans-serif; font-size: 2.5rem; text-align: center; color: #4a334a; margin-bottom: 0.5rem; }
+        .services h2 span { color: #d4748a; }
+        .services > p { text-align: center; color: #7a5a7a; margin-bottom: 3rem; }
+        .service-pills {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+        }
+        .pill {
+            background: #fef6f6; border-radius: 60px; padding: 1.5rem 2rem;
+            text-align: center; flex: 1; min-width: 180px; max-width: 280px;
+            transition: all .3s; border: 2px solid transparent;
+        }
+        .pill:hover { border-color: #d4748a; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(212,116,138,.15); }
+        .pill .icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .pill h3 { font-size: 1.2rem; color: #4a334a; }
+        .pill .price { color: #d4748a; font-weight: 700; font-size: 1.1rem; margin-top: 0.3rem; }
+
+        /* Gallery: rounded image grid */
+        .gallery { padding: 5rem 4rem; background: #fef6f6; }
+        .gallery h2 { font-family: 'Nunito', sans-serif; font-size: 2.5rem; text-align: center; color: #4a334a; margin-bottom: 2rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .gallery-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 30px; transition: all .4s; }
+        .gallery-grid img:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+
+        /* Testimonials */
+        .testimonials { padding: 4rem; background: #fff; text-align: center; }
+        .testimonials h2 { font-family: 'Nunito', sans-serif; font-size: 2.2rem; color: #4a334a; margin-bottom: 2rem; }
+        .testi-card { max-width: 600px; margin: 0 auto; background: #fef6f6; padding: 2rem; border-radius: 40px; }
+        .testi-card .stars { color: #f0c040; font-size: 1.4rem; }
+        .testi-card blockquote { font-size: 1.1rem; color: #5a3f5a; line-height: 1.7; margin: 1rem 0; }
+        .testi-card cite { font-style: normal; color: #d4748a; font-weight: 600; }
+
+        /* Contact: soft */
+        .contact { padding: 4rem; text-align: center; background: linear-gradient(135deg, #ffdbdb, #ffe4e1); }
+        .contact h2 { font-family: 'Nunito', sans-serif; font-size: 2.5rem; color: #4a334a; margin-bottom: 1rem; }
+        .contact p { color: #7a5a7a; margin-bottom: 0.5rem; }
+        .contact a { color: #d4748a; text-decoration: none; font-weight: 600; }
+
+        footer { padding: 2rem; text-align: center; background: #4a334a; color: #dbb; font-size: 0.85rem; }
+
+        @media (max-width:768px){
+            .hero { padding: 1.5rem; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-nav nav a { margin-left: 1rem; font-size: 0.8rem; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-img img { border-radius: 30px 30px 0 0; }
+            .services, .gallery, .testimonials, .contact { padding: 2.5rem 1.5rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .btn-outline-soft { margin-left: 0; margin-top: 0.8rem; display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="paw p1">🐾</div>
+        <div class="paw p2">🐾</div>
+        <div class="paw p3">🐾</div>
+
+        <div class="hero-nav">
+            <div class="logo">🐕 Ladies & <span>Tramps</span></div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="tag">⭐⭐⭐⭐⭐ 5-Star Grooming</div>
+                <h1>Pampered Pups,<br><span>Happy Tails</span></h1>
+                <p>Plymouth's favourite pink palace for pooches. Gentle, loving care from nose to tail — because your dog deserves the best.</p>
+                <div>
+                    <a href="#book" class="btn-soft">Book a Groom</a>
+                    <a href="#services" class="btn-outline-soft">See Prices</a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80" alt="Happy groomed dog" loading="lazy" />
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our <span>Services</span></h2>
+        <p>Everything your furry friend needs, served with a smile and a treat.</p>
+        <div class="service-pills">
+            <div class="pill">
+                <div class="icon">🛁</div>
+                <h3>Full Groom</h3>
+                <div class="price">£38</div>
+                <p style="color:#7a5a7a;font-size:0.85rem;margin-top:0.4rem;">Wash, cut, blow-dry, nails & style</p>
+            </div>
+            <div class="pill">
+                <div class="icon">✂️</div>
+                <h3>Haircut Only</h3>
+                <div class="price">£25</div>
+                <p style="color:#7a5a7a;font-size:0.85rem;margin-top:0.4rem;">Breed-specific or summer trim</p>
+            </div>
+            <div class="pill">
+                <div class="icon">🧴</div>
+                <h3>Wash & Blow</h3>
+                <div class="price">£18</div>
+                <p style="color:#7a5a7a;font-size:0.85rem;margin-top:0.4rem;">Deep cleanse, conditioner & fluff dry</p>
+            </div>
+            <div class="pill">
+                <div class="icon">💅</div>
+                <h3>Nail & Paw</h3>
+                <div class="price">£12</div>
+                <p style="color:#7a5a7a;font-size:0.85rem;margin-top:0.4rem;">Clipping, filing & paw balm</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>🐾 Happy Customers</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80" alt="Happy dog" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&q=80" alt="Puppy grooming" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b0?w=400&q=80" alt="Groomed dog" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Bella comes out looking like a show dog every single time. The ladies are so gentle and patient — even with nervous pups!"</blockquote>
+            <cite>— Sarah M., Mutley</cite>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>📍 Get in Touch</h2>
+        <p>12 Ebrington Street, Plymouth, PL4 9AA</p>
+        <p>✆ <a href="tel:+441752654321">01752 654321</a></p>
+        <p>✉ <a href="mailto:ladiesandtramps@hotmail.co.uk">ladiesandtramps@hotmail.co.uk</a></p>
+        <p style="margin-top:1rem;color:#d4748a;font-weight:700;">Tue–Sat 9am–5pm · Sun 10am–2pm</p>
+        <div style="margin-top:1.5rem;"><a href="#" class="btn-soft">Book Online</a></div>
+    </section>
+
+    <footer>&copy; 2026 Ladies & Tramps Grooming · Plymouth · Where every pup is family.</footer>
+</body>
+</html>
